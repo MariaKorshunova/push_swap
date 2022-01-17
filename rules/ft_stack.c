@@ -6,21 +6,21 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:54:40 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/15 17:27:30 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/16 17:08:27 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*ft_create_node(char name, void *content)
+t_stack	*ft_create_node(void *content)
 {
 	t_stack	*stacknew;
 
 	stacknew = malloc(sizeof(t_stack));
 	if (stacknew == NULL)
 		return (NULL);
-	stacknew->name = name;
 	stacknew->content = *((int *)content);
+	stacknew->index = -1;
 	stacknew->next = NULL;
 	return (stacknew);
 }
@@ -80,7 +80,7 @@ int	ft_create_stack(t_stack **stack_a, char *str)
 	while (j > 0)
 	{
 		nb = ft_atoi_check_digits(arr[j - 1]);
-		stacknew = ft_create_node('a', &nb);
+		stacknew = ft_create_node(&nb);
 		if (!stacknew)
 		{
 			ft_pop_stack(stack_a);

@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 18:24:03 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/15 17:36:01 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/17 17:17:36 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_s(t_stack **stack)
 	(*stack)->next->next = third;
 }
 
-void	ft_p(t_stack **stack_src, t_stack **stack_dest)
+void	ft_p(t_stack **stack_src, t_stack **stack_dest, char c)
 {
 	t_stack	*tmp;
 
@@ -38,9 +38,12 @@ void	ft_p(t_stack **stack_src, t_stack **stack_dest)
 	(*stack_src)->next = NULL;
 	ft_push(stack_dest, *stack_src);
 	*stack_src = tmp;
+	ft_putchar_fd('p', 1);
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
 }
 
-void	ft_r(t_stack **stack)
+void	ft_r(t_stack **stack, char c)
 {
 	t_stack	*last;
 	t_stack	*tmp;
@@ -54,9 +57,22 @@ void	ft_r(t_stack **stack)
 		tmp = tmp->next;
 	tmp->next = last;
 	tmp->next->next = NULL;
+	ft_putchar_fd('r', 1);
+	if (c == 'a' || c == 'b')
+	{
+		ft_putchar_fd(c, 1);
+		ft_putchar_fd('\n', 1);
+	}
 }
 
-void	ft_rr(t_stack **stack)
+void	ft_ra_rb(t_stack **a, t_stack **b)
+{
+	ft_r(a, '0');
+	ft_r(b, '0');
+	ft_putchar_fd('\n', 1);
+}
+
+void	ft_rr(t_stack **stack, char c)
 {
 	t_stack	*begin;
 	t_stack	*tmp;
@@ -73,4 +89,7 @@ void	ft_rr(t_stack **stack)
 	*stack = tmp->next;
 	tmp->next = NULL;
 	(*stack)->next = begin;
+	ft_putstr_fd("rr", 1);
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
 }
