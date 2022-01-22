@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 16:23:49 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/17 13:10:16 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/20 14:34:50 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_search_min_max(t_stack **stack, t_stack **min, t_stack **max)
 			*max = *stack;
 		else if ((*stack)->content < (*min)->content && (*stack)->index < 0)
 			*min = *stack;
-			*stack = (*stack)->next;
+		*stack = (*stack)->next;
 	}
 }
 

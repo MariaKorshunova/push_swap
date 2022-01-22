@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:54:40 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/16 17:08:27 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/21 13:03:57 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack	*ft_create_node(void *content)
 	stacknew->content = *((int *)content);
 	stacknew->index = -1;
 	stacknew->next = NULL;
+	stacknew->steps = NULL;
 	return (stacknew);
 }
 
