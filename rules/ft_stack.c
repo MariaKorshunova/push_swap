@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:54:40 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/21 13:03:57 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/23 14:00:23 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,6 @@ void	ft_pop_stack(t_stack **stack)
 		free(*stack);
 		*stack = tmp;
 	}
-}
-
-int	ft_stacksize(t_stack *stack)
-{
-	int	count;
-
-	count = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		count++;
-	}
-	return (count);
 }
 
 int	ft_create_stack(t_stack **stack_a, char *str)

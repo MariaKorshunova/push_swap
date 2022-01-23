@@ -6,35 +6,37 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 16:23:49 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/20 14:34:50 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/23 14:58:06 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	ft_median(t_stack **stack, int size)
+static void	ft_median(t_stack *stack, int size)
 {
 	t_stack	*tmp;
 
-	tmp = *stack;
+	tmp = stack;
 	while (tmp)
 	{
 		if (size % 2 == 0)
 		{
 			if (tmp->index == (size - 1) / 2)
-				(*stack)->median = tmp;
+				stack->median = tmp;
 		}
 		else if (size % 2 == 1)
 		{
 			if (tmp->index == -1)
-				(*stack)->median = tmp;
+				stack->median = tmp;
 		}
 		tmp = tmp->next;
 	}
 }
 
-static void	ft_search_min_max(t_stack **stack, t_stack **min, t_stack **max)
+static void	ft_min_max_index(t_stack **stack, t_stack **min, t_stack **max)
 {
+	if (!stack || !min || !max)
+		return ;
 	while (*stack)
 	{
 		if ((*stack)->content > (*max)->content && (*stack)->index < 0)
@@ -60,10 +62,10 @@ void	ft_indexing_stack(t_stack **stack, int size)
 			tmp = tmp->next;
 		min = tmp;
 		max = tmp;
-		ft_search_min_max(&tmp, &min, &max);
+		ft_min_max_index(&tmp, &min, &max);
 		min->index = i;
 		max->index = size - i - 1;
 		i++;
 	}
-	ft_median(stack, size);
+	ft_median(*stack, size);
 }

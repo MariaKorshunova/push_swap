@@ -6,11 +6,12 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 17:25:52 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/22 17:22:20 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/23 14:09:52 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 static int	ft_longlen(long long n)
 {

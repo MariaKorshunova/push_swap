@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:48:12 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/22 19:12:47 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/23 12:39:24 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	ft_scenario_rbrra(t_stack **a, t_stack **b, t_stack *elem)
 		ft_r(b, 'b');
 		((elem->steps)->rb)--;
 	}
-	ft_p(b, a, 'a');
 	while ((elem->steps)->rra > 0)
 	{
 		ft_rr(a, 'a');
 		((elem->steps)->rra)--;
 	}
+	ft_p(b, a, 'a');
 	free(elem->steps);
 }
 
@@ -35,12 +35,12 @@ void	ft_scenario_rarrb(t_stack **a, t_stack **b, t_stack *elem)
 		ft_rr(b, 'b');
 		((elem->steps)->rrb)--;
 	}
-	ft_p(b, a, 'a');
 	while ((elem->steps)->ra > 0)
 	{
 		ft_r(a, 'a');
 		((elem->steps)->ra)--;
 	}
+	ft_p(b, a, 'a');
 	free(elem->steps);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 16:21:26 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/22 16:37:39 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/23 13:46:56 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_r(t_stack **stack, char c)
 	t_stack	*last;
 	t_stack	*tmp;
 
-	if (!stack || !(*stack) || !((*stack)->next))
+	if (!((*stack)->next))
 		return ;
 	last = *stack;
 	*stack = (*stack)->next;
@@ -48,6 +48,8 @@ void	ft_rr(t_stack **stack, char c)
 	t_stack	*tmp;
 	int		size;
 
+	if (!(*stack)->next)
+		return ;
 	begin = *stack;
 	tmp = *stack;
 	size = ft_stacksize(*stack);

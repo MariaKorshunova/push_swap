@@ -6,7 +6,7 @@
 #    By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 16:09:09 by jmabel            #+#    #+#              #
-#    Updated: 2022/01/22 16:22:33 by jmabel           ###   ########.fr        #
+#    Updated: 2022/01/23 14:01:21 by jmabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS_DIR_sorting 	=	./sorting/
 SRCS				=	push_swap.c\
 						$(SRCS_DIR_rules)ft_stack.c			$(SRCS_DIR_rules)ft_check_error.c\
 						$(SRCS_DIR_rules)ft_rules_s_p.c		$(SRCS_DIR_rules)ft_rules_rr.c\
+						$(SRCS_DIR_rules)ft_stack_utils.c\
 						$(SRCS_DIR_rules)ft_print_stack.c\
 						$(SRCS_DIR_sorting)indexing.c		$(SRCS_DIR_sorting)push_to_b.c\
 						$(SRCS_DIR_sorting)count_return.c	$(SRCS_DIR_sorting)push_to_a.c\

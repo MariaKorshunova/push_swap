@@ -6,26 +6,11 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:01:12 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/20 15:01:15 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/23 15:02:09 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	ft_median_to_b(t_stack **a, t_stack **b, int size, int size_median)
-{
-	t_stack	*median;
-
-	median = (*a)->median;
-	while (median != *a)
-	{
-		if (size_median <= size / 2)
-			ft_rr(a, 'a');
-		else
-			ft_r(a, 'a');
-	}
-	ft_p(a, b, 'b');
-}
 
 static void	ft_push_to_tail(t_stack **a, t_stack **b, int size, int median)
 {
@@ -44,17 +29,17 @@ static void	ft_push_to_tail(t_stack **a, t_stack **b, int size, int median)
 	}		
 }
 
-void	ft_push_elem_to_b(t_stack **a, t_stack **b, int size, int size_median)
+void	ft_push_elem_to_b(t_stack **a, t_stack **b, int size)
 {
 	int		median;
 	int		count;
 
 	median = ((*a)->median)->content;
-	ft_median_to_b(a, b, size, size_median);
-	count = size - 1;
-	while (count > 2)
+	count = size;
+	while (count > 3)
 	{
-		if (!((*a)->index == 0) && !((*a)->index == size - 1))
+		if (!((*a)->index == 0) && !((*a)->index == size - 1)
+			&& ((*a) != (*a)->median))
 		{
 			ft_p(a, b, 'b');
 			ft_push_to_tail(a, b, size, median);
@@ -63,4 +48,5 @@ void	ft_push_elem_to_b(t_stack **a, t_stack **b, int size, int size_median)
 		else
 			ft_r(a, 'a');
 	}
+	ft_sort_three(a, 'a');
 }

@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 19:32:07 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/22 17:42:44 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/23 18:15:07 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,27 @@ void	ft_push_elem_to_a(t_stack **a, t_stack **b)
 		ft_scenario_rrr(a, b, elem);
 	ft_count_operations(*a, *b);
 	ft_print_stack(*a, *b);
+}
+
+void	ft_min_to_top(t_stack **a, int size)
+{
+	t_stack	*min;
+	t_stack	*tmp;
+	int		size_min;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (tmp->content < min->content)
+			min = tmp;
+		tmp = tmp->next;
+	}
+	size_min = ft_stacksize(min);
+	while (*a != min)
+	{
+		if (size_min <= size / 2)
+			ft_rr(a, 'a');
+		else
+			ft_r(a, 'a');
+	}
 }
