@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:03:31 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 16:39:41 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/25 14:30:35 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,15 @@ static void	ft_define_operations(t_stack *a, t_stack *b, t_stack *pos)
 		b = b->next;
 	}
 	ft_define_ra(a, pos, &stepsnode);
-	stepsnode->rra = stepsnode->size_a - stepsnode->ra;
-	stepsnode->rrb = stepsnode->size_b - stepsnode->rb;
+	if (stepsnode->ra == 0)
+		stepsnode->rra = 0;
+	else
+		stepsnode->rra = stepsnode->size_a - stepsnode->ra;
+	if (stepsnode->rb == 0)
+		stepsnode->rrb = 0;
+	else
+		stepsnode->rrb = stepsnode->size_b - stepsnode->rb;
 	pos->steps = stepsnode;
-	return ;
 }
 
 static int	ft_min_in_fours(int a, int b, int c, int d)

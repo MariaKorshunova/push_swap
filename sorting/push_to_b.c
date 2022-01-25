@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:01:12 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 15:02:09 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/25 14:16:35 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	ft_push_elem_to_b(t_stack **a, t_stack **b, int size)
 			&& ((*a) != (*a)->median))
 		{
 			ft_p(a, b, 'b');
-			ft_push_to_tail(a, b, size, median);
+			if ((*b)->next)
+				ft_push_to_tail(a, b, size, median);
 			count--;
 		}
-		else
-			ft_r(a, 'a');
+		ft_r(a, 'a');
 	}
 	ft_sort_three(a, 'a');
 }

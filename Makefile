@@ -6,7 +6,7 @@
 #    By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 16:09:09 by jmabel            #+#    #+#              #
-#    Updated: 2022/01/23 14:01:21 by jmabel           ###   ########.fr        #
+#    Updated: 2022/01/25 15:55:06 by jmabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS				=	push_swap.c\
 						$(SRCS_DIR_rules)ft_print_stack.c\
 						$(SRCS_DIR_sorting)indexing.c		$(SRCS_DIR_sorting)push_to_b.c\
 						$(SRCS_DIR_sorting)count_return.c	$(SRCS_DIR_sorting)push_to_a.c\
-						$(SRCS_DIR_sorting)scenario.c
+						$(SRCS_DIR_sorting)scenario.c		$(SRCS_DIR_sorting)sorting.c
 
 LIBFT				=	./libft/libft.a
 

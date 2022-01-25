@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 15:25:07 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 17:30:30 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/25 15:49:06 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_steps
 t_stack	*ft_create_node(void *content);
 t_steps	*ft_node_steps(int size_a, int size_b);
 
+void	ft_qsort_stack(t_stack **a, t_stack **b, int size);
 void	ft_push(t_stack **stack, t_stack *new);
 void	ft_pop_stack(t_stack **stack);
 void	ft_s(t_stack **stack, char c);
