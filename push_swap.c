@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:04:05 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/28 17:29:11 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/28 20:25:18 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	main(int argc, char **argv)
 	// 	ft_index_sort(&stack_a, &stack_b, size);
 	else
 		ft_qsort_stack(&stack_a, &stack_b, size);
-	// ft_print_stack(stack_a, stack_b);
 	ft_pop_stack(&stack_a);
 	return (0);
 }
