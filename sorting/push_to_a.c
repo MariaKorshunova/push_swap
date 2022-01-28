@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 19:32:07 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/25 15:54:38 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/25 20:32:18 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ void	ft_push_elem_to_a(t_stack **a, t_stack **b)
 		ft_scenario_rr(a, b, elem);
 	else if ((elem->steps)->scenario == 4)
 		ft_scenario_rrr(a, b, elem);
-	ft_count_operations(*a, *b);
 }

@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 17:25:52 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 14:09:52 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/27 15:10:12 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static void	ft_max_len_value(t_stack *s, int *max_len_index, int *max_len_value)
 
 static void	ft_print_signature(int indexa, int valuea, int indexb, int valueb)
 {
-	printf("%-*s %-*s\n", indexa + valuea + 3, "-", indexb + valueb + 3, "-");
-	printf("%-*s %-*s\n", indexa + valuea + 3, "a", indexb + valueb + 3, "b");
+	printf("%-*s %-*s\n", indexa + valuea + 7, "-", indexb + valueb + 3, "-");
+	printf("%-*s %-*s\n", indexa + valuea + 7, "a", indexb + valueb + 3, "b");
 }
 
 void	ft_print_stack(t_stack *a, t_stack *b)
@@ -64,7 +64,8 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 	{
 		if (a)
 		{
-			printf("[%*d] %*d ", indexa, a->index, valuea, a->content);
+			printf("{%d} [%*d] %*d ",
+				a->number, indexa, a->index, valuea, a->content);
 			a = a->next;
 		}
 		else

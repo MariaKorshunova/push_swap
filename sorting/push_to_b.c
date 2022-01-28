@@ -6,47 +6,105 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:01:12 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/25 14:16:35 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/28 18:57:12 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	ft_push_to_tail(t_stack **a, t_stack **b, int size, int median)
+static int	ft_check_sort(t_stack *a, t_stack *pos, int *prev)
 {
-	int	rr;
+	int	status;
 
-	rr = 0;
-	if ((*b)->content > median)
+	status = 0;
+	if ((a->min->number < a->median->number) && (a->median->number < a->max->number))
 	{
-		if ((*a)->next && ((*a)->next)->next)
+		if ((pos->number > a->min->number) && (pos->number < a->median->number)
+			&& (pos->content > *prev) && (pos->content < a->median->content))
 		{
-			if ((*a)->index == 0 || (*a)->index == size - 1)
-				rr = ft_ra_rb(a, b);
+			*prev = pos->content;
+			status = 1;
 		}
-		if (rr == 0)
-			ft_r(b, 'b');
-	}		
+		if ((pos->number > a->median->number) && (pos->number < a->max->number)
+			&& (pos->content > *prev) && (pos->content > a->median->content))
+		{
+			*prev = pos->content;
+			status = 1;
+		}
+	}
+	if ((a->min->number < a->max->number) && (a->max->number < a->median->number))
+	{
+		if ((pos->number > a->min->number) && (pos->number < a->max->number)
+			&& (pos->content > *prev) && (pos->content < a->median->content))
+		{
+			*prev = pos->content;
+			status = 1;
+		}
+	}
+	if ((a->median->number < a->min->number) && (a->min->number < a->max->number))
+	{
+		if ((pos->number > a->min->number) && (pos->number < a->max->number)
+			&& (pos->content > *prev) && (pos->content < a->median->content))
+		{
+			*prev = pos->content;
+			status = 1;
+		}
+	}
+	return (status);
+}
+
+static void	ft_sort_a(t_stack *begin_a, t_stack **a)
+{
+	if ((begin_a->min->number < begin_a->max->number)
+		&& (begin_a->max->number < begin_a->median->number))
+	{
+		ft_rr(a, 'a');
+		ft_rr(a, 'a');
+		ft_s(a, 'a');
+	}
+	if ((begin_a->median->number < begin_a->min->number)
+		&& (begin_a->min->number < begin_a->max->number))
+	{
+		ft_rr(a, 'a');
+		ft_s(a, 'a');
+	}
 }
 
 void	ft_push_elem_to_b(t_stack **a, t_stack **b, int size)
 {
-	int		median;
+	t_stack	*begin_a;
 	int		count;
+	int		prev;
 
-	median = ((*a)->median)->content;
+	begin_a = *a;
+	(*a)->min = *a;
+	(*a)->max = *a;
+	ft_search_min_max(begin_a, &(begin_a->min), &(begin_a->max));
+	prev = begin_a->min->content;
+	// ft_print_stack(*a, *b);
+	// ft_print_stack((*a)->median, NULL);
 	count = size;
-	while (count > 3)
+	while (count > 0)
 	{
 		if (!((*a)->index == 0) && !((*a)->index == size - 1)
-			&& ((*a) != (*a)->median))
+			&& ((*a) != begin_a->median) && (ft_check_sort(begin_a, *a, &prev) == 0))
 		{
 			ft_p(a, b, 'b');
-			if ((*b)->next)
-				ft_push_to_tail(a, b, size, median);
-			count--;
+			if ((*b)->next && ((*b)->content > begin_a->median->content))
+				ft_r(b, 'b'); 
 		}
-		ft_r(a, 'a');
+		else
+			ft_r(a, 'a');
+		count--;
+		// ft_putstr_fd("count:", 1);
+		// ft_putnbr_fd(count, 1);
+		// ft_putstr_fd("\n", 1);
+		// ft_print_stack(*a, *b);
+		// ft_putstr_fd("-------------\n", 1);
 	}
-	ft_sort_three(a, 'a');
+	if (ft_stacksize(*a) > 3)
+		ft_sort_a(begin_a, a);
+	else
+		ft_sort_three(a, 'a');
+	// ft_print_stack(*a, *b);
 }

@@ -6,13 +6,11 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:04:05 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/25 16:48:52 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/28 17:29:11 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//Another algorithms for stack with size <= 6
 
 int	main(int argc, char **argv)
 {
@@ -49,28 +47,8 @@ int	main(int argc, char **argv)
 		ft_sort_three(&stack_a, 'a');
 		ft_min_to_top(&stack_a, size);
 	}
-	else if ((size >= 4) && (size <= 6))
-	{
-		ft_print_stack(stack_a, stack_b);
-		while (size > 3)
-		{
-			ft_p(&stack_a, &stack_b, 'b');
-			size--;
-		}
-		ft_print_stack(stack_a, stack_b);
-		ft_sort_three(&stack_a, 'a');
-		ft_putstr_fd("sort_three\n", 1);
-		ft_print_stack(stack_a, stack_b);
-		ft_count_operations(stack_a, stack_b);
-		ft_print_steps(stack_b);
-		while (count > 3)
-		{
-			ft_push_elem_to_a(&stack_a, &stack_b);
-			count--;
-			ft_print_stack(stack_a, stack_b);
-		}
-		ft_min_to_top(&stack_a, size);
-	}
+	// else if ((size >= 4) && (size <= 6))
+	// 	ft_index_sort(&stack_a, &stack_b, size);
 	else
 		ft_qsort_stack(&stack_a, &stack_b, size);
 	// ft_print_stack(stack_a, stack_b);

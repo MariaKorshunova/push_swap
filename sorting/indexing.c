@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 16:23:49 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 14:58:06 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/27 15:09:11 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ void	ft_indexing_stack(t_stack **stack, int size)
 		i++;
 	}
 	ft_median(*stack, size);
+}
+
+void	ft_serial_number(t_stack *s)
+{
+	int	i;
+
+	i = 0;
+	while (s)
+	{
+		s->number = i;
+		i++;
+		s = s->next;
+	}
 }

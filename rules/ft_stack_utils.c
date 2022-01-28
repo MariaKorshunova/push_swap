@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:59:36 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 16:32:18 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/27 18:17:21 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ int	ft_stacksize(t_stack *stack)
 	return (count);
 }
 
-void	ft_search_min_max(t_stack **stack, t_stack **min, t_stack **max)
+void	ft_search_min_max(t_stack *stack, t_stack **min, t_stack **max)
 {
 	if (!stack || !min || !max)
 		return ;
-	while (*stack)
+	while (stack)
 	{
-		if ((*stack)->content > (*max)->content)
-			*max = *stack;
-		else if ((*stack)->content < (*min)->content)
-			*min = *stack;
-		*stack = (*stack)->next;
+		if (stack->content > (*max)->content)
+			*max = stack;
+		else if (stack->content < (*min)->content)
+			*min = stack;
+		stack = stack->next;
 	}
 }
