@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:04:05 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/30 19:32:14 by jmabel           ###   ########.fr       */
+/*   Created: 2022/01/30 18:27:53 by jmabel            #+#    #+#             */
+/*   Updated: 2022/01/30 22:23:11 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-// static void ft_create_and_check(stack **a)
+//проверить ft_strncmp_ps с push_swap
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	*instruction;
 	int		i;
+	int		ret;
 
+	(void)argv;
 	if (argc == 1)
-		return (0);
+	{
+		// проверить, что push_swap ничего не возвращает
+	}
 	i = argc - 1;
 	stack_a = NULL;
 	stack_b = NULL;
+	instruction = NULL;
 	while (i > 0)
 	{
-		if (ft_create_stack(&stack_a, argv[i--]) == -1)
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit (1);
-		}	
+		if (ft_create_stack(&stack_a, argv[i--], instruction) == -1)
+			return (0);
 	}
-	if (ft_duplicate_sort(stack_a) == 1)
+	ret = 1;
+	while (ret)
 	{
-		ft_pop_stack(&stack_a);
-		return (0);
+		instruction = get_next_line(0);
+		ft_putstr_fd(instruction, 1);
+		if (instruction == NULL)
+			ret = 0;
 	}
-	ft_dealer_sorting(&stack_a, &stack_b);
-	ft_pop_stack(&stack_a);
 	return (0);
 }

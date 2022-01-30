@@ -4,9 +4,13 @@ push_swap school 42
 ## Useful source
 
 https://github.com/izenynn/push_swap_tester
+
     ./tester.sh .. -rn 10 0 99 -b
+
     cd push_swap_tester/ &&  ./tester.sh .. -rn 10 0 100 100 -b && cd .. 
+
 -ro [RANGE START] [RANGE END] [QUANTITY]
+
     cd push_swap_tester/ &&  ./tester.sh .. -ro 0 100 5 && cd ..
 
 Implementation of push-swap (42-school project) on python with GUI:

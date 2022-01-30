@@ -6,26 +6,21 @@
 #    By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 16:09:09 by jmabel            #+#    #+#              #
-#    Updated: 2022/01/30 20:29:49 by jmabel           ###   ########.fr        #
+#    Updated: 2022/01/30 21:19:52 by jmabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME				= 	push_swap
+NAME				= 	checker
 
-HEADER				=	push_swap.h
+HEADER				=	checker.h
+HEADER_GNL			=	../get_next_line/get_next_line.h
 
-SRCS_DIR_rules		=	./rules/
-SRCS_DIR_sorting 	=	./sorting/
-SRCS				=	push_swap.c\
-						$(SRCS_DIR_rules)ft_stack.c			$(SRCS_DIR_rules)ft_check_error.c\
-						$(SRCS_DIR_rules)ft_rules_s_p.c		$(SRCS_DIR_rules)ft_rules_rr.c\
-						$(SRCS_DIR_rules)ft_stack_utils.c\
-						$(SRCS_DIR_rules)ft_print_stack.c\
-						$(SRCS_DIR_sorting)indexing.c		$(SRCS_DIR_sorting)push_to_b.c\
-						$(SRCS_DIR_sorting)count_return.c	$(SRCS_DIR_sorting)push_to_a.c\
-						$(SRCS_DIR_sorting)scenario.c		$(SRCS_DIR_sorting)sorting.c
+SRCS_DIR_GNL		=	../get_next_line/
 
-LIBFT				=	./libft/libft.a
+SRCS				=	checker.c	stack_checker.c	ft_atoi_error_checker.c\
+						$(SRCS_DIR_GNL)get_next_line.c	$(SRCS_DIR_GNL)get_next_line_utils.c
+
+LIBFT				=	../libft/libft.a
 
 OBJ 				= 	$(SRCS:%.c=%.o)
 
@@ -36,23 +31,23 @@ RM 					= 	rm -rf
 
 all					:	$(NAME) 
 
-%.o					: %.c $(HEADER) 
+%.o					: %.c $(HEADER) $(HEADER_GNL)
 	$(CC) $(CFLAGS)  -c  $<  -o $@ 
 
 $(NAME)				:	$(OBJ) $(LIBFT)
-	$(CC) $(OBJ) -L ./libft -lft -o $(NAME)
+	$(CC) $(OBJ) -L ../libft -lft -o $(NAME)
 	
 $(LIBFT)			:
-	make -C ./libft
+	make -C ../libft
 
 .PHONY				:	all clean fclean re
 
 clean:
 	$(RM) $(OBJ)
-	make clean -C ./libft
+	make clean -C ../libft
 
 fclean				: clean
 	$(RM) $(NAME)
-	make fclean -C ./libft
+	make fclean -C ../libft
 
 re					: fclean all

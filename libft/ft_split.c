@@ -6,11 +6,37 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 11:44:48 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/14 14:06:02 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/30 19:51:17 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	ft_free_array(char ***arr, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len - 1)
+		free((*arr)[i++]);
+	free(*arr);
+}
+
+static size_t	ft_str_in_array(char const *s, char c)
+{
+	size_t	count;
+	size_t	i;
+
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			count++;
+		i++;
+	}
+	return (count);
+}
 
 static	char	**ft_make_array(char **arr, char const *s, char c)
 {
