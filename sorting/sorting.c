@@ -6,11 +6,68 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 15:53:58 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/27 19:17:14 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/30 17:09:26 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	ft_dealer_sorting(t_stack **stack_a, t_stack **stack_b)
+{
+	int	size;
+
+	size = ft_stacksize(*stack_a);
+	if (size == 2)
+		ft_s(stack_a, 'a');
+	else if (size == 3)
+	{
+		ft_sort_three(stack_a, 'a');
+		ft_min_to_top(stack_a, size);
+	}
+	else if ((size >= 4) && (size <= 6))
+		ft_triple_sort(stack_a, stack_b, size);
+	else
+		ft_qsort_stack(stack_a, stack_b, size);
+}
+
+void	ft_qsort_stack(t_stack **a, t_stack **b, int size)
+{
+	int	count;
+	int	size_a;
+
+	count = size;
+	ft_indexing_stack(a, size);
+	ft_serial_number(*a);
+	ft_push_elem_to_b(a, b, size);
+	size_a = ft_stacksize(*a);
+	while (count > size_a)
+	{
+		ft_count_operations(*a, *b);
+		ft_push_elem_to_a(a, b);
+		count--;
+	}
+	ft_min_to_top(a, size);
+}
+
+void	ft_triple_sort(t_stack **a, t_stack **b, int size)
+{
+	int		count;
+
+	count = size;
+	ft_indexing_stack(a, size);
+	while (count > 3)
+	{
+		ft_p(a, b, 'b');
+		count--;
+	}
+	ft_sort_three(a, 'a');
+	while (*b)
+	{
+		ft_push_to_a_from_top_b(a, b, count);
+		count++;
+	}
+	ft_min_to_top(a, size);
+}
 
 void	ft_sort_three(t_stack **s, char c)
 {
@@ -52,24 +109,4 @@ void	ft_min_to_top(t_stack **a, int size)
 		else
 			ft_r(a, 'a');
 	}
-}
-
-void	ft_qsort_stack(t_stack **a, t_stack **b, int size)
-{
-	int	count;
-	int	size_a;
-
-	count = size;
-	ft_indexing_stack(a, size);
-	ft_serial_number(*a);
-	// ft_print_stack(*a, *b); // printing stack after indexing;
-	ft_push_elem_to_b(a, b, size);
-	size_a = ft_stacksize(*a);
-	while (count > size_a)
-	{
-		ft_count_operations(*a, *b);
-		ft_push_elem_to_a(a, b);
-		count--;
-	}
-	ft_min_to_top(a, size);
 }

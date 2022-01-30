@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 16:23:49 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/27 15:09:11 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/30 16:10:43 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ static void	ft_median(t_stack *stack, int size)
 		else if (size % 2 == 1)
 		{
 			if (tmp->index == -1)
+			{
 				stack->median = tmp;
+				tmp->index = size / 2;
+			}
 		}
 		tmp = tmp->next;
 	}

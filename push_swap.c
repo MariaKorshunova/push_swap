@@ -6,19 +6,19 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:04:05 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/28 20:25:18 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/01/30 17:07:12 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// static void ft_create_and_check(stack **a)
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		i;
-	int		size;
-	int		count;
 
 	if (argc == 1)
 		return (0);
@@ -38,19 +38,7 @@ int	main(int argc, char **argv)
 		ft_pop_stack(&stack_a);
 		return (0);
 	}
-	size = ft_stacksize(stack_a);
-	count = size;
-	if (size == 2)
-		ft_s(&stack_a, 'a');
-	else if (size == 3)
-	{
-		ft_sort_three(&stack_a, 'a');
-		ft_min_to_top(&stack_a, size);
-	}
-	// else if ((size >= 4) && (size <= 6))
-	// 	ft_index_sort(&stack_a, &stack_b, size);
-	else
-		ft_qsort_stack(&stack_a, &stack_b, size);
+	ft_dealer_sorting(&stack_a, &stack_b);
 	ft_pop_stack(&stack_a);
 	return (0);
 }
