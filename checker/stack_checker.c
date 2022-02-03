@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:12:29 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/30 22:21:25 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/03 21:31:11 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,51 +52,51 @@ void	ft_pop_stack(t_stack **stack)
 	}
 }
 
-static	int	ft_strncmp_ps(const char *s1, const char *s2)
+static int	ft_split_argv(t_stack **stack_a, char *str)
 {
-	int		i;
+	t_stack	*stacknew;
+	char	**arr;
+	int		j;
+	int		nb;
 
-	i = 0;
-	if (!s1 && !s2)
-		return (0);
-	if (!s1 || !s2)
-		return (-1);
-	while (s1[i] != '\0' && s2[i] != '\0' )
+	j = ft_str_in_array(str, ' ');
+	arr = ft_split(str, ' ');
+	if (!arr)
+		exit (1);
+	while (j > 0)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		nb = ft_atoi_check_digits(arr[j - 1]);
+		stacknew = ft_create_node(&nb);
+		if (!stacknew)
+		{
+			ft_pop_stack(stack_a);
+			ft_free_array(&arr, ft_str_in_array(str, ' ') + 1);
+			exit (1);
+		}
+		ft_push(stack_a, stacknew);
+		j--;
 	}
-	if (s1[i] != '\0' || s2[i] != '\0')
-		return (-1);
+	ft_free_array(&arr, ft_str_in_array(str, ' ') + 1);
 	return (0);
 }
 
-int	ft_create_stack(t_stack **stack_a, char *str, char **output)
+void	ft_create_stack(t_stack **a, char *str)
 {
-	t_stack	*stacknew;
-	int		nb;
-	int		flag_error;
-	char	*str;
+	int	i;
+	int	flag_check;
 
-	flag_error = 0;
-	nb = ft_atoi_check_digits(str, &flag_error);
-	if (flag_error == -1)
+	i = 0;
+	flag_check = 0;
+	while (str[i] != '\0')
 	{
-		*output = get_next_line(0);
-		if (ft_strncmp_ps("Error\n", *output) == 0 && get_next_line(0) == NULL)
-			ft_putstr_fd("OK\n", 1);
-		else
-			ft_putstr_fd("KO\n", 1);
-		ft_pop_stack(stack_a);
-		return (-1);
+		if (ft_isdigit(str[i]) == 1)
+			flag_check = 1;
+		i++;
 	}
-	stacknew = ft_create_node(&nb);
-	if (!stacknew)
+	if (flag_check == 0)
 	{
-		ft_pop_stack(stack_a);
+		ft_putstr_fd("Error\n", 2);
 		exit (1);
 	}
-	ft_push(stack_a, stacknew);
-	return (0);
+	ft_split_argv(a, str);
 }

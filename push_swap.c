@@ -6,13 +6,11 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:04:05 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/30 19:32:14 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/03 17:54:36 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// static void ft_create_and_check(stack **a)
 
 int	main(int argc, char **argv)
 {
@@ -27,11 +25,8 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	while (i > 0)
 	{
-		if (ft_create_stack(&stack_a, argv[i--]) == -1)
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit (1);
-		}	
+		ft_create_stack(&stack_a, argv[i]);
+		i--;
 	}
 	if (ft_duplicate_sort(stack_a) == 1)
 	{

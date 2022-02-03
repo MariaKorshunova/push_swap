@@ -6,7 +6,7 @@
 #    By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 16:09:09 by jmabel            #+#    #+#              #
-#    Updated: 2022/01/30 21:19:52 by jmabel           ###   ########.fr        #
+#    Updated: 2022/02/03 20:51:25 by jmabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ HEADER_GNL			=	../get_next_line/get_next_line.h
 
 SRCS_DIR_GNL		=	../get_next_line/
 
-SRCS				=	checker.c	stack_checker.c	ft_atoi_error_checker.c\
-						$(SRCS_DIR_GNL)get_next_line.c	$(SRCS_DIR_GNL)get_next_line_utils.c
+SRCS				=	checker.c	stack_checker.c	ft_check_error_checker.c\
+						$(SRCS_DIR_GNL)get_next_line.c	$(SRCS_DIR_GNL)get_next_line_utils.c\
+						ft_print_stack.c\
 
 LIBFT				=	../libft/libft.a
 

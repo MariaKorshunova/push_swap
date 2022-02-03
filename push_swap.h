@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 15:25:07 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/30 17:05:40 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/03 17:50:48 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_steps
 t_stack	*ft_create_node(void *content);
 t_steps	*ft_node_steps(int size_a, int size_b);
 
-int		ft_create_stack(t_stack **stack_a, char *str);
 int		ft_stacksize(t_stack *stack);
 int		ft_atoi_check_digits(const char *str);
 int		ft_duplicate_sort(t_stack *stack);
@@ -56,6 +55,7 @@ void	ft_rr(t_stack **stack, char c);
 int		ft_ra_rb(t_stack **a, t_stack **b);
 int		ft_rra_rrb(t_stack **a, t_stack **b);
 
+void	ft_create_stack(t_stack **a, char *str);
 void	ft_dealer_sorting(t_stack **stack_a, t_stack **stack_b);
 void	ft_qsort_stack(t_stack **a, t_stack **b, int size);
 void	ft_triple_sort(t_stack **a, t_stack **b, int size);

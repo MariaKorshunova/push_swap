@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:18:33 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/30 22:16:13 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/03 20:51:10 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ typedef struct s_stack
 
 t_stack	*ft_create_node(void *content);
 
-int		ft_create_stack(t_stack **stack_a, char *str, char **intsruction);
-int		ft_atoi_checker(const char *str, int *flag_error);
-
+void	ft_create_stack(t_stack **a, char *str);
 void	ft_push(t_stack **stack, t_stack *new);
 void	ft_pop_stack(t_stack **stack);
+
+int		ft_atoi_check_digits(const char *str);
+int		ft_duplicate_sort(t_stack *stack);
+
+void	ft_print_stack(t_stack *stack_a, t_stack *stack_b);
 
 #endif
