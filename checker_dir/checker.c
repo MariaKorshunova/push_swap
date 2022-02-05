@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:27:53 by jmabel            #+#    #+#             */
-/*   Updated: 2022/02/04 20:02:35 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 13:39:19 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int	main(int argc, char **argv)
 	int		i;
 
 	if (argc == 1)
-	{
-		ft_check_empty();
 		return (0);
-	}
 	i = argc - 1;
 	stack_a = NULL;
 	while (i > 0)

@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 16:21:52 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 14:23:25 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 12:15:24 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,20 @@ void	ft_s(t_stack **stack, char c)
 	*stack = (*stack)->next;
 	(*stack)->next = second;
 	(*stack)->next->next = third;
-	ft_putchar_fd('s', 1);
-	ft_putchar_fd(c, 1);
-	ft_putchar_fd('\n', 1);
+	if (c == 'a' || c == 'b')
+	{
+		ft_putchar_fd('s', 1);
+		ft_putchar_fd(c, 1);
+		ft_putchar_fd('\n', 1);
+	}
+}
+
+void	ft_ss(t_stack **a, t_stack **b, char c)
+{
+	ft_s(a, '0');
+	ft_s(b, '0');
+	if (c == '0')
+		ft_putstr_fd("ss\n", 1);
 }
 
 void	ft_p(t_stack **stack_src, t_stack **stack_dest, char c)
@@ -41,7 +52,10 @@ void	ft_p(t_stack **stack_src, t_stack **stack_dest, char c)
 	(*stack_src)->next = NULL;
 	ft_push(stack_dest, *stack_src);
 	*stack_src = tmp;
-	ft_putchar_fd('p', 1);
-	ft_putchar_fd(c, 1);
-	ft_putchar_fd('\n', 1);
+	if (c == 'a' || c == 'b')
+	{
+		ft_putchar_fd('p', 1);
+		ft_putchar_fd(c, 1);
+		ft_putchar_fd('\n', 1);
+	}
 }

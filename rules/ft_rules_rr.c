@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 16:21:26 by jmabel            #+#    #+#             */
-/*   Updated: 2022/01/23 13:46:56 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 10:49:36 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,20 @@ void	ft_r(t_stack **stack, char c)
 		tmp = tmp->next;
 	tmp->next = last;
 	tmp->next->next = NULL;
-	ft_putchar_fd('r', 1);
 	if (c == 'a' || c == 'b')
 	{
+		ft_putchar_fd('r', 1);
 		ft_putchar_fd(c, 1);
 		ft_putchar_fd('\n', 1);
 	}
 }
 
-int	ft_ra_rb(t_stack **a, t_stack **b)
+int	ft_ra_rb(t_stack **a, t_stack **b, char c)
 {
 	ft_r(a, '0');
 	ft_r(b, '0');
-	ft_putchar_fd('\n', 1);
+	if (c == '0')
+		ft_putstr_fd("rr\n", 1);
 	return (1);
 }
 
@@ -69,10 +70,11 @@ void	ft_rr(t_stack **stack, char c)
 	}
 }
 
-int	ft_rra_rrb(t_stack **a, t_stack **b)
+int	ft_rra_rrb(t_stack **a, t_stack **b, char c)
 {
 	ft_rr(a, '0');
 	ft_rr(b, '0');
-	ft_putstr_fd("rrr\n", 1);
+	if (c == '0')
+		ft_putstr_fd("rrr\n", 1);
 	return (1);
 }

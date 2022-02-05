@@ -6,13 +6,42 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:02:12 by jmabel            #+#    #+#             */
-/*   Updated: 2021/11/20 16:51:42 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 12:52:10 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_current_str(int fd, char *current_str)
+static char	*ft_strjoin_gnl(char *str, char *buf)
+{
+	char	*dest;
+	size_t	i;
+	size_t	j;
+	size_t	str_len;
+	size_t	buf_len;
+
+	str_len = ft_strlen(str);
+	buf_len = ft_strlen(buf);
+	i = 0;
+	dest = (char *)malloc((str_len + buf_len + 1) * sizeof(char));
+	if (dest == NULL)
+		return (NULL);
+	while (i < str_len)
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	j = i;
+	i = 0;
+	while (i < buf_len)
+		dest[j++] = buf[i++];
+	dest[j] = '\0';
+	free(str);
+	free(buf);
+	return (dest);
+}
+
+static char	*ft_current_str(int fd, char *current_str)
 {
 	char	*buf;
 	int		ret;
@@ -35,7 +64,7 @@ char	*ft_current_str(int fd, char *current_str)
 	return (current_str);
 }
 
-char	*ft_next_line(char *current_str)
+static char	*ft_next_line(char *current_str)
 {
 	char	*next_line;
 	int		i;
@@ -60,7 +89,7 @@ char	*ft_next_line(char *current_str)
 	return (next_line);
 }
 
-char	*ft_new_current_str(char *current_str)
+static char	*ft_new_current_str(char *current_str)
 {
 	char	*str;
 	int		i;

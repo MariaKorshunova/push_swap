@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 14:03:28 by jmabel            #+#    #+#             */
-/*   Updated: 2021/11/18 19:45:01 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 12:52:22 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-size_t	ft_strlen(const char *str);
+# include "../libft/libft.h"
 
 char	*get_next_line(int fd);
-char	*ft_current_str(int fd, char *current_str);
-char	*ft_new_current_str(char *current_str);
-char	*ft_next_line(char *current_str);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin_gnl(char *str, char *buf);
 
 #endif

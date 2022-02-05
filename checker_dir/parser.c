@@ -6,11 +6,12 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:51:47 by jmabel            #+#    #+#             */
-/*   Updated: 2022/02/04 15:07:37 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 13:41:40 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../push_swap.h"
+#include "../get_next_line/get_next_line.h"
 
 static int	ft_strncmp_ps(const char *s1, const char *s2)
 {
@@ -32,6 +33,45 @@ static int	ft_strncmp_ps(const char *s1, const char *s2)
 	return (0);
 }
 
+static int	ft_do_instruction(t_stack **a, t_stack **b, char **s)
+{
+	if (ft_strncmp_ps(*s, "sa\n") == 0)
+		ft_s(a, 'c');
+	else if (ft_strncmp_ps(*s, "sb\n") == 0)
+		ft_s(b, 'c');
+	else if (ft_strncmp_ps(*s, "ss\n") == 0)
+		ft_ss(a, b, 'c');
+	else if (ft_strncmp_ps(*s, "pa\n") == 0)
+		ft_p(b, a, 'c');
+	else if (ft_strncmp_ps(*s, "pb\n") == 0)
+		ft_p(a, b, 'c');
+	else if (ft_strncmp_ps(*s, "ra\n") == 0)
+		ft_r(a, 'c');
+	else if (ft_strncmp_ps(*s, "rb\n") == 0)
+		ft_r(b, 'c');
+	else if (ft_strncmp_ps(*s, "rr\n") == 0)
+		ft_ra_rb(a, b, 'c');
+	else if (ft_strncmp_ps(*s, "rra\n") == 0)
+		ft_rr(a, 'c');
+	else if (ft_strncmp_ps(*s, "rrb\n") == 0)
+		ft_rr(b, 'c');
+	else if (ft_strncmp_ps(*s, "rrr\n") == 0)
+		ft_rra_rrb(a, b, 'c');
+	else
+		return (-1);
+	return (1);
+}
+
+static void	ft_check_sort(t_stack **a, t_stack **b)
+{
+	if (ft_duplicate_sort(*a) == 1 && !(*b))
+		ft_putstr_fd("OK\n", 1);
+	else
+		ft_putstr_fd("KO\n", 1);
+	ft_pop_stack(a);
+	ft_pop_stack(b);
+}
+
 void	ft_parser(t_stack **a)
 {
 	t_stack	*b;
@@ -47,37 +87,16 @@ void	ft_parser(t_stack **a)
 			ret = 0;
 		else
 		{
-			if (ft_strncmp_ps(instruction, "sa\n") == 0)
-				ft_s(a);
-			else if (ft_strncmp_ps(instruction, "sb\n") == 0)
-				ft_s(&b);
-			else if (ft_strncmp_ps(instruction, "ss\n") == 0)
+			if (ft_do_instruction(a, &b, &instruction) == -1)
 			{
-				ft_s(a);
-				ft_s(&b);
+				ft_putstr_fd("Error\n", 1);
+				free(instruction);
+				ft_pop_stack(a);
+				ft_pop_stack(&b);
+				return ;
 			}
-			else if (ft_strncmp_ps(instruction, "pa\n") == 0)
-				ft_p(&b, a);
-			else if (ft_strncmp_ps(instruction, "pb\n") == 0)
-				ft_p(a, &b);
-			else if (ft_strncmp_ps(instruction, "ra\n") == 0)
-				ft_r(a);
-			else if (ft_strncmp_ps(instruction, "rb\n") == 0)
-				ft_r(&b);
-			else if (ft_strncmp_ps(instruction, "rr\n") == 0)
-			{
-				ft_r(a);
-				ft_r(&b);
-			}
-			else if (ft_strncmp_ps(instruction, "rra\n") == 0)
-				ft_rr(a);
-			else if (ft_strncmp_ps(instruction, "rrb\n") == 0)
-				ft_rr(&b);
-			else if (ft_strncmp_ps(instruction, "rrr\n") == 0)
-			{
-				ft_rr(a);
-				ft_rr(&b);
-			}						
 		}
+		free(instruction);
 	}
+	ft_check_sort(a, &b);
 }

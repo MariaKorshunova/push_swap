@@ -6,7 +6,7 @@
 /*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 15:25:07 by jmabel            #+#    #+#             */
-/*   Updated: 2022/02/04 20:07:59 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 12:16:45 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ void	ft_push(t_stack **stack, t_stack *new);
 void	ft_pop_stack(t_stack **stack);
 void	ft_search_min_max(t_stack *stack, t_stack **min, t_stack **max);
 void	ft_s(t_stack **stack, char c);
+void	ft_ss(t_stack **a, t_stack **b, char c);
 void	ft_p(t_stack **stack_src, t_stack **stack_dest, char c);
 void	ft_r(t_stack **stack, char c);
 void	ft_rr(t_stack **stack, char c);
-int		ft_ra_rb(t_stack **a, t_stack **b);
-int		ft_rra_rrb(t_stack **a, t_stack **b);
+int		ft_ra_rb(t_stack **a, t_stack **b, char c);
+int		ft_rra_rrb(t_stack **a, t_stack **b, char c);
 
 void	ft_create_stack(t_stack **a, char *str);
 void	ft_dealer_sorting(t_stack **stack_a, t_stack **stack_b);
@@ -71,6 +72,7 @@ void	ft_scenario_rr(t_stack **a, t_stack **b, t_stack *elem);
 void	ft_scenario_rrr(t_stack **a, t_stack **b, t_stack *elem);
 void	ft_push_elem_to_a(t_stack **a, t_stack **b);
 void	ft_push_to_a_from_top_b(t_stack **a, t_stack **b, int size_a);
+
 void	ft_parser(t_stack **a);
 
 void	ft_print_stack(t_stack *stack_a, t_stack *stack_b);

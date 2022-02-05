@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmabel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:49:30 by jmabel            #+#    #+#             */
-/*   Updated: 2021/10/18 12:21:53 by jmabel           ###   ########.fr       */
+/*   Updated: 2022/02/05 12:48:21 by jmabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strchr(const char *s, int c)
 	int		i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	str = (char *)s;
 	while (str[i] != '\0' && str[i] != (char)c)
 		i++;

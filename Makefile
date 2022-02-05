@@ -6,7 +6,7 @@
 #    By: jmabel <jmabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 16:09:09 by jmabel            #+#    #+#              #
-#    Updated: 2022/02/04 20:03:29 by jmabel           ###   ########.fr        #
+#    Updated: 2022/02/05 13:32:54 by jmabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,16 @@ HEADER_GNL			=	$(SRCS_DIR_GNL)get_next_line.h
 SRCS				=	push_swap.c\
 						$(SRCS_DIR_rules)ft_stack.c					$(SRCS_DIR_rules)ft_check_error.c\
 						$(SRCS_DIR_rules)ft_rules_s_p.c				$(SRCS_DIR_rules)ft_rules_rr.c\
-						$(SRCS_DIR_rules)ft_stack_utils.c			$(SRCS_DIR_rules)ft_print_stack.c\
+						$(SRCS_DIR_rules)ft_stack_utils.c\
 						$(SRCS_DIR_sorting)indexing.c				$(SRCS_DIR_sorting)push_to_b.c\
 						$(SRCS_DIR_sorting)count_return.c			$(SRCS_DIR_sorting)push_to_a.c\
 						$(SRCS_DIR_sorting)scenario.c				$(SRCS_DIR_sorting)sorting.c\
 
 SRCS_CHECKER	=		$(SRCS_DIR_checker)checker.c				$(SRCS_DIR_checker)parser.c\
-						$(SRCS_DIR_GNL)get_next_line.c				$(SRCS_DIR_GNL)get_next_line_utils.c\
+						$(SRCS_DIR_GNL)get_next_line.c\
 						$(SRCS_DIR_rules)ft_stack.c					$(SRCS_DIR_rules)ft_check_error.c\
+						$(SRCS_DIR_rules)ft_rules_s_p.c				$(SRCS_DIR_rules)ft_rules_rr.c\
+						$(SRCS_DIR_rules)ft_stack_utils.c\
 
 LIBFT				=	./libft/libft.a
 
