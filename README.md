@@ -1,5 +1,11 @@
 # push_swap
-push_swap school 42
+
+**Status:** done
+
+**Grade:** 125
+
+Push_swap school 42. Sort data on a stack, with a limited set of instructions, using
+the lowest possible number of actions. 
 
 ## Useful source
 
